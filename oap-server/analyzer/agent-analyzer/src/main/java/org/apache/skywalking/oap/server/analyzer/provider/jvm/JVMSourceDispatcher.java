@@ -80,7 +80,7 @@ public class JVMSourceDispatcher {
         serviceInstanceJVMCPU.setServiceName(serviceInstance);
         serviceInstanceJVMCPU.setUsePercent(cpu.getUsagePercent());
         serviceInstanceJVMCPU.setTimeBucket(timeBucket);
-        sourceReceiver.receive(serviceInstanceJVMCPU);
+        sourceReceiver.receive(serviceInstanceJVMCPU);//接收数据
     }
 
     private void sendToGCMetricProcess(String service,

@@ -72,6 +72,7 @@ public abstract class AbstractMethodInterceptor implements InstanceMethodsAround
          * Spring MVC plugin do nothing if current request is forward request.
          * Ref: https://github.com/apache/skywalking/pull/1325
          */
+        // 如果是forwardRequest就直接返回
         if (forwardRequestFlag != null && forwardRequestFlag) {
             return;
         }
@@ -87,12 +88,14 @@ public abstract class AbstractMethodInterceptor implements InstanceMethodsAround
                 pathMappingCache.addPathMapping(method, requestURL);
                 requestURL = pathMappingCache.findPathMapping(method);
             }
+
             operationName = getAcceptedMethodTypes(method) + requestURL;
         }
-
+        // 获取HttpServletRequest
         HttpServletRequest request = (HttpServletRequest) ContextManager.getRuntimeContext()
                                                                         .get(REQUEST_KEY_IN_RUNTIME_CONTEXT);
         if (request != null) {
+            // 拿到StackDepth
             StackDepth stackDepth = (StackDepth) ContextManager.getRuntimeContext().get(CONTROLLER_METHOD_STACK_DEPTH);
 
             if (stackDepth == null) {
@@ -177,6 +180,7 @@ public abstract class AbstractMethodInterceptor implements InstanceMethodsAround
                     Tags.STATUS_CODE.set(span, Integer.toString(response.getStatus()));
                 }
 
+                // 清除一些上下文信息
                 ContextManager.getRuntimeContext().remove(REQUEST_KEY_IN_RUNTIME_CONTEXT);
                 ContextManager.getRuntimeContext().remove(RESPONSE_KEY_IN_RUNTIME_CONTEXT);
                 ContextManager.getRuntimeContext().remove(CONTROLLER_METHOD_STACK_DEPTH);

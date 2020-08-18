@@ -54,6 +54,7 @@ public class JVMService implements BootService, Runnable {
 
     @Override
     public void boot() throws Throwable {
+        //创建一个持续收集（生产）指标的单一线程的线程池，这个线程池会定期（每秒）执行，而且执行的是JVMService的run方法
         collectMetricFuture = Executors.newSingleThreadScheduledExecutor(
             new DefaultNamedThreadFactory("JVMService-produce"))
                                        .scheduleAtFixedRate(new RunnableWithExceptionProtection(
@@ -65,6 +66,7 @@ public class JVMService implements BootService, Runnable {
                                                }
                                            }
                                        ), 0, 1, TimeUnit.SECONDS);
+        // 创建一个持续发送（消费）数据的单一线程的线程池，这个线程池会定期（每秒）执行，而且执行的是JVMService的内部类Sender的run方法
         sendMetricFuture = Executors.newSingleThreadScheduledExecutor(
             new DefaultNamedThreadFactory("JVMService-consume"))
                                     .scheduleAtFixedRate(new RunnableWithExceptionProtection(

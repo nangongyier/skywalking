@@ -45,10 +45,12 @@ import static org.apache.skywalking.apm.agent.core.plugin.match.MethodInheritanc
  * filed
  */
 public abstract class AbstractControllerInstrumentation extends AbstractSpring4Instrumentation {
+    //构造函数拦截点
     @Override
     public ConstructorInterceptPoint[] getConstructorsInterceptPoints() {
         return new ConstructorInterceptPoint[] {
             new ConstructorInterceptPoint() {
+                // 匹配方式，这里是返回了一个any()即总是匹配
                 @Override
                 public ElementMatcher<MethodDescription> getConstructorMatcher() {
                     return any();
@@ -61,16 +63,18 @@ public abstract class AbstractControllerInstrumentation extends AbstractSpring4I
             }
         };
     }
-
+    // 实例方法拦截点，返回了一个数组，一个是针对@RequestMapping这种类型的注解，一个是针对
+    // @GetMapping、@PostMapping、@PutMapping、@DeleteMapping、@PatchMapping这些类型的注解
     @Override
     public InstanceMethodsInterceptPoint[] getInstanceMethodsInterceptPoints() {
         return new InstanceMethodsInterceptPoint[] {
             new DeclaredInstanceMethodsInterceptPoint() {
+                // 所有有RequestMapping这个注解的
                 @Override
                 public ElementMatcher<MethodDescription> getMethodsMatcher() {
                     return byMethodInheritanceAnnotationMatcher(named("org.springframework.web.bind.annotation.RequestMapping"));
                 }
-
+                // RequestMappingMethodInterceptor
                 @Override
                 public String getMethodsInterceptor() {
                     return Constants.REQUEST_MAPPING_METHOD_INTERCEPTOR;
@@ -90,12 +94,13 @@ public abstract class AbstractControllerInstrumentation extends AbstractSpring4I
                         .or(byMethodInheritanceAnnotationMatcher(named("org.springframework.web.bind.annotation.DeleteMapping")))
                         .or(byMethodInheritanceAnnotationMatcher(named("org.springframework.web.bind.annotation.PatchMapping")));
                 }
-
+                // RestMappingMethodInterceptor
                 @Override
                 public String getMethodsInterceptor() {
                     return Constants.REST_MAPPING_METHOD_INTERCEPTOR;
                 }
 
+                // 需要增强的类的匹配方式
                 @Override
                 public boolean isOverrideArgs() {
                     return false;
@@ -106,6 +111,7 @@ public abstract class AbstractControllerInstrumentation extends AbstractSpring4I
 
     @Override
     protected ClassMatch enhanceClass() {
+        // 抽象类不定义具体匹配方式，而是交给子类，让子类去实现getEnhanceAnnotations方法。
         return ClassAnnotationMatch.byClassAnnotationMatch(getEnhanceAnnotations());
     }
 
