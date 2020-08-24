@@ -192,3 +192,5 @@
         </plugins>
     </build>
 </project>
+
+<!--此module为SkyWalking的UI部分，其中定义了Web模块的端口以及Server端的接口地址-->

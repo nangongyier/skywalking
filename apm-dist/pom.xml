@@ -116,3 +116,5 @@
         </plugins>
     </build>
 </project>
+
+<!--此module为SkyWalking的打包module，其中定义了整个module的打包规则-->
