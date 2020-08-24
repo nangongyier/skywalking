@@ -30,11 +30,17 @@
         <compiler.version>1.8</compiler.version>
     </properties>
 
+    <!--此module为SkyWalking的扩展包-->
     <modules>
+        <!--此module为SkyWalking与log4j的1.x的整合-->
         <module>apm-toolkit-log4j-1.x</module>
+        <!--此module为SkyWalking与log4j的2.x的整合-->
         <module>apm-toolkit-log4j-2.x</module>
+        <!--此module为SkyWalking与logback的1.x的整合-->
         <module>apm-toolkit-logback-1.x</module>
+        <!--此module为SkyWalking的opentracing协议接口的扩展包-->
         <module>apm-toolkit-opentracing</module>
+        <!--此module为SkyWalking提供的自定义扩展包-->
         <module>apm-toolkit-trace</module>
         <module>apm-toolkit-meter</module>
         <module>apm-toolkit-micrometer-registry</module>

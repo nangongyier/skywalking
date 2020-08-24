@@ -28,13 +28,21 @@
     <artifactId>apm-sniffer</artifactId>
     <packaging>pom</packaging>
 
+    <!--此module为SkyWalking的JavaAgent部分-->
     <modules>
+        <!--此module为JavaAgent的入口-->
         <module>apm-agent</module>
+        <!--此module为JavaAgent的核心处理逻辑，包含自动埋点、收集数据等功能-->
         <module>apm-agent-core</module>
+        <!--此module包含SkyWalking所支持的稳定第三方插件-->
         <module>apm-sdk-plugin</module>
+        <!--此module包含SkyWalking所支持的自己的扩展插件-->
         <module>apm-toolkit-activation</module>
+        <!--此module为测试工具插件-->
         <module>apm-test-tools</module>
+        <!--此module包含SkyWalking所支持的JDK插件-->
         <module>bootstrap-plugins</module>
+        <!--此module包含SkyWalking所支持的可选的第三方插件-->
         <module>optional-plugins</module>
         <module>optional-reporter-plugins</module>
     </modules>
