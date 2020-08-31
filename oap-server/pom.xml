@@ -27,22 +27,40 @@
 
     <artifactId>oap-server</artifactId>
     <packaging>pom</packaging>
+
+    <!--此module为SkyWalking的backend部分-->
+    <!--由于SkyWalking的高扩展性，整体的module设计都是高抽象的接口设计，每个module完成一部分功能，但是这部分功能如何完成是由具体的实现来决定的。
+    举个例子，上面的server-storage-plugin这个module，主要功能为SkyWalking的后端存储，用户只需要扩展SkyWalking的接口就可以轻易替换这一层的具体实现-->
     <modules>
+        <!--此module为Backend的核心处理逻辑-->
         <module>server-core</module>
         <module>analyzer</module>
+        <!--此module包含Backend所能支持的收集数据的方式，例如从JavaAgent端获取参数，从Envoy获取metrics参数等-->
         <module>server-receiver-plugin</module>
+        <!--此module定义Backend的集群方式，例如Consul、zookeeper等-->
         <module>server-cluster-plugin</module>
+        <!--此module定义Backend的存储方式，例如Elasticsearch、MySQL等-->
         <module>server-storage-plugin</module>
+        <!--此module负责维护Backend的所有依赖包信息-->
         <module>server-library</module>
+        <!--此module为Backend的启动入口-->
         <module>server-starter</module>
         <module>server-starter-es7</module>
+        <!--此module定义Backend查询数据的方式，例如GraphQL-->
         <module>server-query-plugin</module>
+        <!--此module负责Backend的告警部分的工作-->
         <module>server-alarm-plugin</module>
+        <!--此module为Backend的测试module-->
         <module>server-testing</module>
+        <!--此module主要负责Backend的OAL体系-->
         <module>oal-rt</module>
+        <!--此module负责Backend的网络遥测，例如Prometheus-->
         <module>server-telemetry</module>
+        <!--此module主要负责Backend的OAL体系-->
         <module>oal-grammar</module>
+        <!--此module负责Backend暴露数据接口的功能-->
         <module>exporter</module>
+        <!--此module为Backend的配置中心方式，例如Apollo、ZooKeeper等-->
         <module>server-configuration</module>
         <module>server-bootstrap</module>
         <module>server-tools</module>

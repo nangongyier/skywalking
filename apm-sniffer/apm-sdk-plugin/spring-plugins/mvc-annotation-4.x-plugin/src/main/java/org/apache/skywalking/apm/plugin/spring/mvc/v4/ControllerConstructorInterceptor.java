@@ -42,6 +42,7 @@ public class ControllerConstructorInterceptor implements InstanceConstructorInte
     @Override
     public void onConstruct(EnhancedInstance objInst, Object[] allArguments) {
         String basePath = "";
+        // 获取@RequestMapping的信息，其实主要是想要获取到路径信息
         RequestMapping basePathRequestMapping = objInst.getClass().getAnnotation(RequestMapping.class);
         if (basePathRequestMapping != null) {
             if (basePathRequestMapping.value().length > 0) {

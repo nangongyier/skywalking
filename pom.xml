@@ -262,6 +262,17 @@
             <version>${javax.annotation-api.version}</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>cn.fraudmetrix.shutter</groupId>
+            <artifactId>shutter-client</artifactId>
+            <version>2.1.7.8</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.grpc</groupId>
+                    <artifactId>grpc-all</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
     </dependencies>
 
     <dependencyManagement>
