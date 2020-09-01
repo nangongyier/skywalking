@@ -11,7 +11,7 @@
     <!-- name:与当前接入的应用名称一致 environment:当前运行的环境 group:使用default分组 -->
     <shutter:application name="octopus-skywalking" environment="${ENV}" group="DEFAULT_GROUP"/>
     <!-- address:shutter服务地址 download-dir:配置下载的临时路径 -->
-    <shutter:config-center address="${SHUTTER}" download-dir="${shutter.output}" protocol="http"/>
+    <shutter:config-center address="${shutter.hostList}" download-dir="${shutter.output}" protocol="http"/>
     <shutter:security accessKey="9Q81o012i178zXmU" secretKey="b642f3bd9b3c4033a47c3e4764eeb53e"/>
     <shutter:annotation-scan base-package="org.apache.skywalking.apm.agent.config"/>
     <shutter:property-placeholder location="classpath*:build.properties"
