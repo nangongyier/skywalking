@@ -22,6 +22,7 @@ public class ControllerInstrumentation extends AbstractControllerInstrumentation
 
     public static final String ENHANCE_ANNOTATION = "org.springframework.stereotype.Controller";
 
+    // 匹配所有有@Controller注解的类
     @Override
     protected String[] getEnhanceAnnotations() {
         return new String[] {ENHANCE_ANNOTATION};
