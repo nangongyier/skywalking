@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xmlns:config="http://www.tongdun.cn/schema/config"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.tongdun.cn/schema/config
+		http://www.tongdun.cn/schema/config/config.xsd"
+       default-lazy-init="false" default-autowire="byName">
+
+    <config:repository accessKey="YzXG63Q9Vm901lh8" secretKey="203fdeae2d24431d9a9a77794bfa5fa1"/>
+
+    <!-- 本应用配置 -->
+
+    <config:property-placeholder location="classpath*:properties/octopus-skywalking.properties" ignore-unresolvable="true"
+                                 cluster="DEFAULT_GROUP"/>
+
+</beans>

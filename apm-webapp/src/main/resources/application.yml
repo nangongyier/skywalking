@@ -42,3 +42,12 @@ spring:
 management:
   # Customizing the management endpoint paths
   context-path: /manage
+
+shutter:
+  group: DEFAULT_GROUP
+  environment: dev
+  hostList: 10.57.17.39:8188
+
+app:
+  name: octopus-skywalking
+  output: /tmp/output/${app.name}

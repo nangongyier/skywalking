@@ -263,22 +263,6 @@
             <version>${javax.annotation-api.version}</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>cn.fraudmetrix.shutter</groupId>
-            <artifactId>shutter-client</artifactId>
-            <version>2.1.7.8</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>io.grpc</groupId>
-                    <artifactId>grpc-all</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>5.1.2.RELEASE</version>
-        </dependency>
     </dependencies>
 
     <dependencyManagement>
@@ -312,6 +296,11 @@
                 <artifactId>jmh-generator-annprocess</artifactId>
                 <version>${jmh.version}</version>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>cn.tongdun.config</groupId>
+                <artifactId>config-client</artifactId>
+                <version>1.0.3</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
