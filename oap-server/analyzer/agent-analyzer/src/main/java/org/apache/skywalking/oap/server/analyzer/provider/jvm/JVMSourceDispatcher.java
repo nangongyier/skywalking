@@ -81,7 +81,7 @@ public class JVMSourceDispatcher {
         double adjustedCpuUsagePercent = Math.max(cpu.getUsagePercent(), 1.0);
         serviceInstanceJVMCPU.setUsePercent(adjustedCpuUsagePercent);
         serviceInstanceJVMCPU.setTimeBucket(timeBucket);
-        sourceReceiver.receive(serviceInstanceJVMCPU);
+        sourceReceiver.receive(serviceInstanceJVMCPU);//接收数据
     }
 
     private void sendToGCMetricProcess(String service,

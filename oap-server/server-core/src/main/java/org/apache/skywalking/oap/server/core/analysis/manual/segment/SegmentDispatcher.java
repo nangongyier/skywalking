@@ -42,7 +42,7 @@ public class SegmentDispatcher implements SourceDispatcher<Segment> {
         segment.setVersion(source.getVersion());
         segment.setTagsRawData(source.getTags());
         segment.setTags(SpanTag.Util.toStringList(source.getTags()));
-
+        //构造SegmentRecord对象，然后RecordStreamProcessor的in方法去处理（消费）segment信息
         RecordStreamProcessor.getInstance().in(segment);
     }
 }

@@ -297,6 +297,11 @@
                 <version>${jmh.version}</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>cn.tongdun.config</groupId>
+                <artifactId>config-client</artifactId>
+                <version>1.0.3</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

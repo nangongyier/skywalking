@@ -109,6 +109,10 @@
             <artifactId>logback-classic</artifactId>
             <version>${logback-classic.version}</version>
         </dependency>
+        <dependency>
+            <groupId>cn.tongdun.config</groupId>
+            <artifactId>config-client</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
@@ -146,7 +150,7 @@
                             <goal>npm</goal>
                         </goals>
                         <configuration>
-                            <arguments>install --registry=https://registry.npmjs.org/</arguments>
+                            <arguments>install --registry=https://registry.npm.taobao.org/</arguments>
                         </configuration>
                     </execution>
                     <execution>
@@ -192,3 +196,5 @@
         </plugins>
     </build>
 </project>
+
+<!--此module为SkyWalking的UI部分，其中定义了Web模块的端口以及Server端的接口地址-->
