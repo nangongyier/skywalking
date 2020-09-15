@@ -21,11 +21,11 @@ package org.apache.skywalking.apm.webapp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
+//import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 import org.springframework.context.annotation.ImportResource;
 
 @SpringBootApplication
-@EnableZuulProxy
+//@EnableZuulProxy
 @ImportResource(locations = {"classpath*:apm-webapp.xml"})
 public class ApplicationStartUp extends SpringBootServletInitializer {
 

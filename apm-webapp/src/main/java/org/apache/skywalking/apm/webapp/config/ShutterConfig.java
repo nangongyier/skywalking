@@ -55,6 +55,6 @@ public class ShutterConfig implements ConfigChangeListener {
 
         ConfigClient client = repository.getClient();
         Properties properties = client.file().getProperties(metadata,this);
-        logger.info("shutter file change : app={}, env={}, group={}, new propertes={}", metadata.getApp(), metadata.getEnv(), metadata.getGroup(), PropertiesUtils.dump(properties));
+        logger.info("===========shutter file change : app={}, env={}, group={}, new propertes={}", metadata.getApp(), metadata.getEnv(), metadata.getGroup(), PropertiesUtils.dump(properties));
     }
 }
